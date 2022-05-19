@@ -1,8 +1,7 @@
 Netlist Simples
 * Cadeia de resistores
-R1 a b 1
-R2 b c 1
-R3 c d 1
-R4 d e 1
-R5 e 0 1
-I1 a 0 1
+R1 v1 0 4
+R2 v2 0 2
+R3 v1 v2 8
+I1 v1 0 10
+I2 v2 0 5
