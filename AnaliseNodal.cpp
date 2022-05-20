@@ -42,41 +42,41 @@ double
 
 // /* Resolucao de sistema de equacoes lineares.
 //    Metodo de Gauss-Jordan com condensacao pivotal */
-// void resolversistema(void)
-// {
-//   int i,j,l, a;
-//   double t, p;
+void resolversistema(void)
+{
+  int i,j,l, a;
+  double t, p;
 
-//   for (i=1; i<=nv; i++) {
-//     t=0.0;
-//     a=i;
-//     for (l=i; l<=nv; l++) {
-//       if (fabs(Yn[l][i])>fabs(t)) {
-// 	a=l;
-// 	t=Yn[l][i];
-//       }
-//     }
-//     if (i!=a) {
-//       for (l=1; l<=nv+1; l++) {
-// 	p=Yn[i][l];
-// 	Yn[i][l]=Yn[a][l];
-// 	Yn[a][l]=p;
-//       }
-//     }
-//     if (fabs(t)<TOLG) {
-//       printf("Sistema singular\n");
-//       exit(1);
-//     }
-//     for (j=nv+1; j>i; j--) {  /* Ponha j>0 em vez de j>i para melhor visualizacao */
-//       Yn[i][j] /= t;
-//       p=Yn[i][j];
-//       for (l=1; l<=nv; l++) {
-// 	if (l!=i)
-// 	  Yn[l][j]-=Yn[l][i]*p;
-//       }
-//     }
-//   }
-// }
+  for (i=1; i<=nv; i++) {
+    t=0.0;
+    a=i;
+    for (l=i; l<=nv; l++) {
+      if (fabs(Yn[l][i])>fabs(t)) {
+	a=l;
+	t=Yn[l][i];
+      }
+    }
+    if (i!=a) {
+      for (l=1; l<=nv+1; l++) {
+	p=Yn[i][l];
+	Yn[i][l]=Yn[a][l];
+	Yn[a][l]=p;
+      }
+    }
+    if (fabs(t)<TOLG) {
+      printf("Sistema singular\n");
+      exit(1);
+    }
+    for (j=nv+1; j>i; j--) {  /* Ponha j>0 em vez de j>i para melhor visualizacao */
+      Yn[i][j] /= t;
+      p=Yn[i][j];
+      for (l=1; l<=nv; l++) {
+	if (l!=i)
+	  Yn[l][j]-=Yn[l][i]*p;
+      }
+    }
+  }
+}
 
 /* Rotina que conta os nos e atribui numeros a eles */
 int numero(char *nome)
@@ -193,26 +193,26 @@ int main(void)
 #endif
   }
 //   /* Resolve o sistema */
-//   resolversistema();
-// #ifdef DEBUG
-//   /* Opcional: Mostra o sistema resolvido */
-//   printf("Sistema resolvido:\n");
-//   for (i=1; i<=nv; i++) {
-//       for (j=1; j<=nv+1; j++)
-//         if (Yn[i][j]!=0) printf("%+3.1f ",Yn[i][j]);
-//         else printf(" ... ");
-//       printf("\n");
-//     }
-//   getch();
-// #endif
-//   /* Mostra solucao */
-//   printf("Solucao:\n");
-//   strcpy(txt,"Tensao");
-//   for (i=1; i<=nv; i++) {
-//     if (i==nn+1) strcpy(txt,"Corrente");
-//     printf("%s %s: %g\n",txt,lista[i],Yn[i][nv+1]);
-//   }
-//   getch();
+  resolversistema();
+#ifdef DEBUG
+  /* Opcional: Mostra o sistema resolvido */
+  printf("Sistema resolvido:\n");
+  for (i=1; i<=nv; i++) {
+      for (j=1; j<=nv+1; j++)
+        if (Yn[i][j]!=0) printf("%+3.1f ",Yn[i][j]);
+        else printf(" ... ");
+      printf("\n");
+    }
+  getch();
+#endif
+  /* Mostra solucao */
+  printf("Solucao:\n");
+  strcpy(txt,"Tensao");
+  for (i=1; i<=nv; i++) {
+    if (i==nn+1) strcpy(txt,"Corrente");
+    printf("%s %s: %g\n",txt,lista[i],Yn[i][nv+1]);
+  }
+  getch();
   return 0;
 }
 
