@@ -1,0 +1,12 @@
+Netlist Simples III
+* Cadeia de resistores
+R1 0 v1 0.5
+R2 v2 v1 1
+R3 v2 0 0.5
+R4 v3 v2 0.25
+R5 v3 v4 1
+R6 v4 0 0.34
+R7 v4 v1 1
+I1 v1 0 5
+I2 0 v3 6
+I3 0 v4 2

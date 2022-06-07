@@ -104,7 +104,7 @@ int main(void)
 {
   system("cls");
   ne=0; nv=0; strcpy(lista[0],"0");
-  arquivo=fopen("NetlistSimples.net","r");
+  arquivo=fopen("NetlistSimplesII.net","r");
 
   printf("Lendo netlist:\n");
   fgets(txt,MAX_LINHA,arquivo);
